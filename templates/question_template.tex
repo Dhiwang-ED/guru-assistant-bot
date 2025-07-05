@@ -1,0 +1,69 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Paket untuk menyertakan gambar
+\usepackage[left=2cm,right=2cm,top=2.5cm,bottom=2cm]{geometry} % Mengatur margin halaman
+\usepackage{fancyhdr} % Paket untuk header/footer kustom (opsional, untuk tampilan lebih canggih)
+\pagestyle{plain} % Nonaktifkan header/footer bawaan jika pakai fancyhdr
+
+\begin{document}
+
+% --- Header Halaman ---
+\begin{center}
+    % Pastikan path relatif ke gambar Anda benar dari lokasi kompilasi LaTeX!
+    % Jika bot_scripts/generate_question.py menjalankan pdflatex di /tmp,
+    % dan folder assets/images ada di root repo, maka pathnya adalah:
+    % /workspaces/guru-assistant-bot/assets/images/logo_sekolah.png
+    % Untuk pdflatex di /tmp, kita bisa menggunakan path absolut atau symlink
+    % Alternatif yang lebih robust: menyalin gambar ke /tmp sebelum kompilasi.
+    % Namun, untuk POC, kita asumsikan path relatif ini bisa bekerja jika pdflatex dijalankan dari root repo
+    % Atau paling aman, salin gambar ke /tmp lalu panggil langsung namanya.
+    \includegraphics[width=0.2\textwidth]{../assets/images/logo_sekolah.png} \\ % PATH INI AKAN KITA UBAH DI PYTHON SCRIPT
+    \vspace{0.5cm} % Spasi vertikal
+    {\large Mata Pelajaran: \textbf{ {{ subject }} }} \\
+    {\large Kelas: \textbf{ {{ grade }} }} \\
+    {\large Guru: \textbf{ {{ teacher_name }} }} \\
+    \vspace{0.2cm}
+    \rule{\textwidth}{1pt} % Garis pemisah
+    \vspace{0.2cm}
+    {\Large \textbf{ {{ exam_title }} }} \\
+    {\small Tanggal: {{ date }} }
+\end{center}
+
+\vspace{1cm}
+
+% --- Isi Soal (dari Jinja2) ---
+\textbf{PETUNJUK UMUM:}
+\begin{enumerate}
+    \item Bacalah setiap soal dengan teliti.
+    \item Jawablah semua pertanyaan pada lembar jawaban yang tersedia.
+\end{enumerate}
+
+\section*{Bagian A: Pilihan Ganda}
+
+\begin{enumerate}
+    \item Soal pilihan ganda pertama:
+        \begin{enumerate}[A.]
+            \item Pilihan A
+            \item Pilihan B
+            \item Pilihan C
+            \item Pilihan D
+            \item Pilihan E
+        \end{enumerate}
+    \item Soal pilihan ganda kedua:
+        \begin{enumerate}[A.]
+            \item Pilihan A
+            \item Pilihan B
+            \item Pilihan C
+            \item Pilihan D
+            \item Pilihan E
+        \end{enumerate}
+\end{enumerate}
+
+\section*{Bagian B: Esai}
+
+\begin{enumerate}
+    \item Jelaskan konsep {{ topic_1 }} secara singkat!
+    \item Bagaimana hubungan antara {{ topic_2 }} dan {{ topic_3 }}?
+\end{enumerate}
+
+\end{document}
