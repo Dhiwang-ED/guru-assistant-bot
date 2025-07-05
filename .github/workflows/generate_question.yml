@@ -52,8 +52,8 @@ jobs:
         # texlive-luatex: diperlukan oleh beberapa paket modern
         # texlive-lang-indonesian: untuk dukungan bahasa Indonesia (opsional)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-pictures texlive-luatex texlive-lang-indonesian
+           sudo apt-get update
+              sudo apt-get install -y texlive-full # Ini akan menginstal sangat banyak paket 
 
       - name: Install Python dependencies
         run: |
